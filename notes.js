@@ -17,7 +17,7 @@ var saveNotes = (notes) => {
 };
 
 var addNote = (title, body) => {
-    var notes = [];
+    var notes = fetchNotes();
     var note = {
         title,
         body
