@@ -26,13 +26,19 @@ var addNote = (title, body) => {
     if (duplicateNotes.length == 0) {
         notes.push(note);
         saveNotes(notes);
+        return note;
     } else {
         console.log('duplicate note already exists');
     }
 };
 var getAll = () => {};
 var getNote = () => {};
-var removeNote = () => {};
+var removeNote = (title) => {
+    var notes = fetchNotes();
+    var filteredNotes = notes.filter((note) => note.title !== title);
+    saveNotes(filteredNotes);
+    return notes.length !== filteredNotes.length;
+};
 
 module.exports = {
     addNote,
