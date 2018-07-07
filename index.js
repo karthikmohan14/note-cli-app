@@ -15,13 +15,20 @@ console.log(command);
 if (command === 'add') {
     var note = notes.addNote(argv.title, argv.body);
     if (note) {
-        console.log(`note added with title: ${note.title}`);
-        console.log(`note added with body : ${note.body}`);
+        console.log('note added');
+        notes.logNote(note);
     }
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
-    notes.getNote(argv.title);
+    var note = notes.getNote(argv.title);
+    if (note) {
+        notes.logNote(note);
+    } else {
+        console.log('note not found');
+
+    }
+
 } else if (command === 'remove') {
     if (notes.removeNote(argv.title)) {
         console.log('note removed');
