@@ -1,4 +1,4 @@
-console.log('starting notes.js');
+// console.log('starting notes.js');
 
 const fs = require('fs');
 
@@ -35,7 +35,9 @@ var addNote = (title, body) => {
         console.log('duplicate note already exists');
     }
 };
-var getAll = () => {};
+var getAll = () => {
+    return fetchNotes();
+};
 var getNote = (title) => {
     var notes = fetchNotes();
     var filteredNotes = notes.filter((notes) => notes.title === title);
