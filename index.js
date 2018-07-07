@@ -6,8 +6,29 @@ const yargs = require('yargs');
 
 const notes = require('./notes.js');
 // fs.appendFile('greetings.txt', `hello ${user.username} ! you are ${notes.age} !`, (error) => {});
-
-const argv = yargs.argv;
+const titleOptions = {
+    describe: ' title of note ',
+    demand: true,
+    alias: 't'
+};
+const argv = yargs
+    .command('add', ' add a new note ', {
+        title: titleOptions,
+        body: {
+            describe: ' body of note ',
+            demand: true,
+            alias: 'b'
+        }
+    })
+    .command('list', ' list all notes ')
+    .command('read', ' read a note ', {
+        title: titleOptions
+    })
+    .command('remove', ' remove a note ', {
+        title: titleOptions
+    })
+    .help()
+    .argv;
 // console.log("yargs : ", argv);
 var command = argv._[0];
 // console.log(command);
